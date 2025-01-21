@@ -1,33 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "../../styles/custom-clock.css";
 
-function Clock() {
-  const [timeUnit, setTimeUnit] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+const Clock = () => {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [isRunning, setIsRunning] = useState(true);
 
-  const startTimer = () => {
-    const intervalIdFn = setInterval(() => {
-      console.log("ongoing");
-      setTimeUnit((prevTimeUnit) => {
-        console.log({ prevTimeUnit });
-        prevTimeUnit + 1;
-      });
-    }, 1000);
-    setIntervalId(intervalIdFn);
-  };
+  useEffect(() => {
+    let timerID;
+    if (isRunning) {
+      timerID = setInterval(() => {
+        setTime(new Date().toLocaleTimeString());
+      }, 1000);
+    }
 
-  const stopTimer = () => {
-    clearInterval(intervalId);
-  };
+    // Cleanup the interval on component unmount or when stopping
+    return () => clearInterval(timerID);
+  }, [isRunning]);
+
+  const handleStop = () => setIsRunning(false);
+  const handleStart = () => setIsRunning(true);
+
   return (
-    <div>
-      <h4>Clock Page</h4>
-      <div className="box">{timeUnit}</div>
-      <button onClick={() => startTimer}>Start</button>
-      <button onClick={() => stopTimer}>Stop</button>
+    <div id="clockArea">
+      <div className="d-flex align-items-center justify-content-end gap-1">
+        <div className="clockArea__time">
+          <h5>{time}</h5>
+        </div>
+        <button
+          className="btn btn-dark"
+          onClick={handleStop}
+          disabled={!isRunning}
+        >
+          Stop
+        </button>
+        <button
+          className="btn btn-dark"
+          onClick={handleStart}
+          disabled={isRunning}
+        >
+          Start
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default Clock;

@@ -4,6 +4,7 @@ import Header from "./components/headers/Header";
 import Navigation from "./components/navigation/Navigation";
 import BootstrapClient from "./components/bootstrap/BootstrapClient";
 import { UserProvider } from "./UserContext";
+import Clock from "./components/clock/Clock";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body>
           <div className="mainContent">
+            <Clock />
             <div className="d-flex">
               <div className="sidebarSection">
                 <Navigation />
