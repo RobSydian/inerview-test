@@ -1,15 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Header from "./components/headers/Header";
+import Navigation from "./components/navigation/Navigation";
+import BootstrapClient from "./components/bootstrap/BootstrapClient";
 
 export const metadata = {
   title: "Create Next App",
@@ -19,8 +12,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <Header />
+        <div className="mainContent">
+          <div className="d-flex">
+            <div className="sidebarSection">
+              <Navigation />
+            </div>
+            {children}
+          </div>
+        </div>
+        <BootstrapClient />
       </body>
     </html>
   );
