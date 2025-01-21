@@ -44,23 +44,44 @@ nav {
 }
 
 #sidebarBtn {
-  width: 2rem;
-  height: 2rem;
   position: absolute;
-  left: 7;
-  top: 7;
+  left: 15px;
+  top: 0px;
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .sidebar {
   position: absolute;
-  top: 48px;
+  top: 7vh;
   left: 0;
   background-color: white;
   z-index: 100;
 }
 
+#clockArea {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+
 .sidebar-collapse.show {
   width: 20rem;
+}
+
+#headerSection {
+  background-color: #6d8196;
+  padding: 0.5rem;
+  min-height: 7vh;
+}
+
+.sidebar a {
+  margin: 0.5rem 0;
+  padding: 0.3rem 0.7rem;
+}
+
+.sidebar a:hover {
+  border-bottom: 5px solid #6d8196;
 }
 
 @media (prefers-color-scheme: dark) {

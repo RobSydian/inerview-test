@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { UserContext } from "@/app/UserContext";
+import { useContext, useState } from "react";
 
 function UserForm() {
   const [newUser, setNewUser] = useState({ key: "", name: "", surname: "" });
+  const { usersList, setUsersList } = useContext(UserContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,7 +13,7 @@ function UserForm() {
   };
 
   const addName = () => {
-    setUsers((prevUsers) => [
+    setUsersList((prevUsers) => [
       ...prevUsers,
       { ...newUser, key: prevUsers.length + 1 },
     ]);

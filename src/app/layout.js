@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/headers/Header";
 import Navigation from "./components/navigation/Navigation";
 import BootstrapClient from "./components/bootstrap/BootstrapClient";
+import { UserProvider } from "./UserContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,18 +12,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <div className="mainContent">
-          <div className="d-flex">
-            <div className="sidebarSection">
-              <Navigation />
+    <UserProvider>
+      <html lang="en">
+        <body>
+          <div className="mainContent">
+            <div className="d-flex">
+              <div className="sidebarSection">
+                <Navigation />
+              </div>
+              {children}
             </div>
-            {children}
           </div>
-        </div>
-        <BootstrapClient />
-      </body>
-    </html>
+          <BootstrapClient />
+        </body>
+      </html>
+    </UserProvider>
   );
 }
