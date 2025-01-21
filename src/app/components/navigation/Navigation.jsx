@@ -21,7 +21,7 @@ function Navigation() {
         <div className="collapse sidebar-collapse" id="sidebarCollapsable">
           <div className="card card-body">
             <Link href="/">Home</Link>
-            <Link href="userList">User List</Link>
+            <Link href="userForm">profile</Link>
           </div>
         </div>
       </div>

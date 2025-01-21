@@ -13,7 +13,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
         <div className="mainContent">
           <div className="d-flex">
             <div className="sidebarSection">

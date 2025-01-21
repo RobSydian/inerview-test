@@ -43,18 +43,24 @@ nav {
   min-height: 100vh;
 }
 
-.sidebar-collapse.show {
-  width: 20rem;
-  position: absolute;
-  left: 0;
-}
-
 #sidebarBtn {
   width: 2rem;
   height: 2rem;
   position: absolute;
   left: 7;
   top: 7;
+}
+
+.sidebar {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background-color: white;
+  z-index: 100;
+}
+
+.sidebar-collapse.show {
+  width: 20rem;
 }
 
 @media (prefers-color-scheme: dark) {
