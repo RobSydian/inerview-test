@@ -15,7 +15,8 @@ function UserList() {
     user.key > 0 ? (
       <tr key={user.key}>
         <td>{user.name}</td>
-        <td>{user.surname}</td>
+        <td>{user.email}</td>
+        <td>{user.password}</td>
       </tr>
     ) : null
   );
@@ -29,7 +30,8 @@ function UserList() {
         <thead className="thead-dark">
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
+            <th scope="col">password</th>
           </tr>
         </thead>
         <tbody>

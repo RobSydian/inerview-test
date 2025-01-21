@@ -8,12 +8,14 @@ export const UserProvider = ({ children }) => {
   const [usersList, setUsersList] = useState([
     {
       name: "Nimfa",
-      surname: "March",
+      email: "March",
+      password: "12345",
       key: 1,
     },
     {
       name: "Dafne",
-      surname: "Montefusco",
+      email: "Montefusco",
+      password: "678910",
       key: 2,
     },
   ]);

@@ -1,0 +1,16 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.customAlert {
+  animation: fadeInOut 3s ease-in-out;
+}
