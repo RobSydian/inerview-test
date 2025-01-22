@@ -15,7 +15,6 @@ const Clock = () => {
       }, 1000);
     }
 
-    // Cleanup the interval on component unmount or when stopping
     return () => clearInterval(timerID);
   }, [isRunning]);
 
@@ -36,7 +35,7 @@ const Clock = () => {
           Stop
         </button>
         <button
-          className="btn btn-dark"
+          className="btn btn-light"
           onClick={handleStart}
           disabled={isRunning}
         >

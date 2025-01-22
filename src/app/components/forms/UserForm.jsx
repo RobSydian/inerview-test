@@ -11,12 +11,31 @@ function UserForm() {
     email: "",
     password: "",
   });
-  const { usersList, setUsersList } = useContext(UserContext);
+  const { setUsersList } = useContext(UserContext);
   const [sendNotification, setSendNotification] = useState(false);
+
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewUser((prevNewUser) => ({ ...prevNewUser, [name]: value }));
+
+    if (name === "name") {
+      const nameRegex = /^[^\$%&/(·"_]+$/u;
+      setNameError(!nameRegex.test(value));
+    }
+
+    if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setEmailError(!emailRegex.test(value));
+    }
+
+    if (name === "password") {
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{12,}$/;
+      setPasswordError(!passwordRegex.test(value));
+    }
   };
 
   const addName = () => {
@@ -40,7 +59,7 @@ function UserForm() {
       <div className="d-flex justify-content-center align-items-center ">
         <div className="border border-secondary rounded p-3 shadow-lg">
           <h4 className="mb-4">Add Profile</h4>
-          <div className="d-flex gap-3 align-items-end">
+          <div className="d-flex gap-3 align-items-start mb-5">
             <div className="form-group input-group-size-md">
               <label htmlFor="name">Name</label>
               <input
@@ -53,6 +72,11 @@ function UserForm() {
                 value={newUser.name}
                 required
               />
+              {nameError && (
+                <span className="small-text text-danger">
+                  * Incorrect character for a name
+                </span>
+              )}
             </div>
             <div className="form-group input-group-size-md">
               <label htmlFor="email">Email</label>
@@ -61,11 +85,16 @@ function UserForm() {
                 className="form-control"
                 name="email"
                 id="email"
-                placeholder="Enter Email"
+                placeholder="ex: name@company.com"
                 onChange={handleChange}
                 value={newUser.email}
                 required
               />
+              {emailError && (
+                <span className="small-text text-danger">
+                  * Insert correct email format
+                </span>
+              )}
             </div>
             <div className="form-group input-group-size-md">
               <label htmlFor="password">Password</label>
@@ -79,8 +108,16 @@ function UserForm() {
                 value={newUser.password}
                 required
               />
+              {passwordError && (
+                <span className="small-text text-danger">
+                  * Minimum 12 alphanumeric chars
+                </span>
+              )}
             </div>
-            <button className="btn btn-dark" onClick={addName}>
+            <button
+              className="btn btn-dark align-self-center"
+              onClick={addName}
+            >
               Add name
             </button>
           </div>

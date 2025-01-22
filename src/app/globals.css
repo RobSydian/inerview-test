@@ -85,6 +85,10 @@ nav {
   border-bottom: 5px solid #6d8196;
 }
 
+.small-text {
+  font-size: 0.9rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
